@@ -14,7 +14,7 @@ const headers = {
   "Access-Control-Allow-Headers": ["Origin", "Content-Type", "Accept"],
 };
 
-app.get("/download", (req, res) => {
+app.get("/download/twitchclip", (req, res) => {
   var URL = req.query.URL;
   var temp = URL.split("/");
   var clipName = temp[temp.length - 1];

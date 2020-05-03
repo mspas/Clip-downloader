@@ -1,0 +1,64 @@
+.switch-container {
+  width: 100%;
+  max-height: 200px;
+}
+.switch-container > .switch-option {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  width: calc(calc(100% / 2) - 2px);
+  max-height: 100%;
+  padding: 50px 0;
+  color: rgba(0, 0, 0, 0.55);
+  background: rgba(255, 255, 255, 0.068);
+  border-left: 1px solid rgba(255, 255, 255, 0.192);
+  border-right: 1px solid rgba(255, 255, 255, 0.192);
+}
+.switch-container > .switch-option:first-child {
+  border-left: none;
+}
+.switch-container > .switch-option:last-child {
+  border-right: none;
+}
+.switch-container > .switch-option:hover {
+  background: rgba(255, 255, 255, 0.192);
+}
+.switch-container > .switch-option:hover .title,
+.switch-container > .switch-option:hover .title-sm {
+  animation: shake 0.5s ease infinite;
+}
+.switch-option > .title {
+  font-size: 3rem;
+  margin: 0;
+}
+.switch-option > .title-sm {
+  letter-spacing: 3px;
+}
+
+.active {
+  cursor: default !important;
+  color: rgba(0, 0, 0, 0.75) !important;
+  background: rgba(255, 255, 255, 0.192) !important;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  75% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+}
+
+.downloader-wrap {
+  padding: 100px 20%;
+}

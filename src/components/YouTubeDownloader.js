@@ -1,6 +1,7 @@
 import React from "react";
+import "./downloader.css";
 
-class ClipDownloader extends React.Component {
+class YouTubeDownloader extends React.Component {
   constructor(props) {
     super(props);
     this.state = { url: "" };
@@ -17,7 +18,7 @@ class ClipDownloader extends React.Component {
   handleGetClip = (event) => {
     event.preventDefault();
     console.log(this.state.url);
-    fetch(`http://localhost:9000/download?URL=${this.state.url}`, {
+    fetch(`http://localhost:9000/download/twitchclip?URL=${this.state.url}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -26,11 +27,14 @@ class ClipDownloader extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="heading">Twitch Clip Downloader !</h1>
+      <div className="downloader-container">
+        <h1 className="heading-youtube">
+          YouTube <span>Downloader</span>
+        </h1>
+        <p>URL:</p>
         <input
           className="URL-input"
-          placeholder="https://clips.twitch.tv/WonderfulSpikyLlamaWTRuck"
+          placeholder="for ex. https://clips.twitch.tv/WonderfulSpikyLlamaWTRuck"
           onChange={this.handleInputChange}
         />
         <button className="convert-button" onClick={this.handleGetClip}>
@@ -40,4 +44,4 @@ class ClipDownloader extends React.Component {
     );
   }
 }
-export default ClipDownloader;
+export default YouTubeDownloader;

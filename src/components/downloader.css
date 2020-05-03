@@ -1,0 +1,19 @@
+.downloader-container {
+  text-align: center;
+}
+h1 > span {
+  font-size: 0.7em;
+}
+input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 25px;
+}
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
