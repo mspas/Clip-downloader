@@ -6,7 +6,7 @@ main {
   width: 100vw;
   height: 100vh;
   transition-timing-function: ease-in;
-  transition-duration: 0.5s;
+  transition-duration: 0.2s;
 }
 main > h1 {
   margin-top: 0;
@@ -19,7 +19,7 @@ main > h1 {
   font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .youtube {
-  background: #fa6a6a;
+  background: #ff8888;
   font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -27,4 +27,8 @@ main > h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.downloader-wrap {
+  padding: 10% 20%;
 }

@@ -38,7 +38,7 @@ class ClipDownloader extends React.Component {
           onChange={this.handleInputChange}
         />
         <button className="convert-button" onClick={this.handleGetClip}>
-          Convert
+          Download
         </button>
       </div>
     );

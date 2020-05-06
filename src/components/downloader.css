@@ -1,6 +1,9 @@
 .downloader-container {
   text-align: center;
 }
+h1 {
+  color: rgba(0, 0, 0, 0.507);
+}
 h1 > span {
   font-size: 0.7em;
 }
@@ -8,12 +11,36 @@ input {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 50%;
   height: 25px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.466);
+  transition: box-shadow 0.5s;
+}
+input:focus {
+  outline: none;
+  box-shadow: 1px 2px 5px black;
 }
 button {
+  cursor: pointer;
+  outline: none;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  letter-spacing: 2px;
+  font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(68, 68, 68, 0.644);
+  color: aliceblue;
+  transition: all 0.3s cubic-bezier(0.65, -0.25, 0.25, 1.95);
+}
+button:hover {
+  letter-spacing: 4px;
 }
