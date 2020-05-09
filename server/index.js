@@ -14,30 +14,31 @@ const headers = {
   "Access-Control-Allow-Headers": ["Origin", "Content-Type", "Accept"],
 };
 
-app.get("/download/twitchclip", (req, res) => {
+app.get("/download/twitchclip", async (req, res) => {
   var URL = req.query.URL;
   var temp = URL.split("/");
   var clipName = temp[temp.length - 1];
-  var downloadURL = "https://clips-media-assets2.twitch.tv/AT-cm%7C";
+  var downloadURL = "";
 
-  return new Promise((resolve) => {
+  await new Promise((resolve) => {
     request(
       {
         headers: {
-          Accept: "application/vnd.twitchtv.v5+json",
+          "Accept": "application/vnd.twitchtv.v5+json",
           "Client-ID": "uywdn3u5k0i0p27xlasmsp7vxk1o2t",
         },
         uri: "https://api.twitch.tv/kraken/clips/" + clipName,
         method: "GET",
       },
       function (err, res, body) {
-        var data = JSON.parse(body);
-        downloadURL += data.tracking_id + ".mp4";
+        let data = JSON.parse(body);
+        downloadURL = data.thumbnails.small.split("-preview-")[0] + ".mp4";
         resolve(downloadURL);
       }
     );
-  }).then(() => {
-    res.set(headers);
-    res.json({ url: downloadURL });
   });
+  res.set(headers);
+  res.json({ url: downloadURL });
 });
+
+app.get("/download/ytvideo", async (req, res) => { });

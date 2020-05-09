@@ -17,12 +17,16 @@ class ClipDownloader extends React.Component {
 
   handleGetClip = (event) => {
     event.preventDefault();
-    console.log(this.state.url);
-    fetch(`http://localhost:9000/download/twitchclip?URL=${this.state.url}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((json) => window.open(json.url));
+    let validateUrl = true;
+    if (validateUrl)
+      fetch(`http://localhost:9000/download/twitchclip?URL=${this.state.url}`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          window.open(json.url);
+        });
+    else window.alert("Invalid clip URL!");
   };
 
   render() {
@@ -45,3 +49,12 @@ class ClipDownloader extends React.Component {
   }
 }
 export default ClipDownloader;
+
+
+/*new RegExp("https:\/\/(w{3}).twitch.tv\/.*").test(
+      this.state.url
+    );
+    if (!validateUrl)
+      validateUrl = new RegExp("https:\/\/clips.twitch.tv\/.*").test(
+        this.state.url
+      );*/
