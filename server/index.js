@@ -18,12 +18,12 @@ const headers = {
 const twitchOptions = {
   headers: {
     "Accept": "application/vnd.twitchtv.v5+json",
-    "Client-ID": "uywdn3u5k0i0p27xlasmsp7vxk1o2t",
+    "Client-ID": "...",
   },
   method: "GET",
 }
 
-const YT_API_KEY = "AIzaSyC6po_hBpCzAlmDcGBG8lqKBo0SM-B9cyw";
+const YT_API_KEY = "...";
 
 app.get("/download/twitchclip", async (req, res) => {
   var URL = req.query.URL;
