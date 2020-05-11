@@ -17,8 +17,8 @@ class YouTubeDownloader extends React.Component {
 
   handleGetClip = (event) => {
     event.preventDefault();
-    console.log(this.state.url);
-    fetch(`http://localhost:9000/download/twitchclip?URL=${this.state.url}`, {
+    let validateUrl = new RegExp("https:\/\/w{3}.youtube.com\/.*").test(this.state.url);
+    fetch(`http://localhost:9000/download/ytvideo?URL=${this.state.url}`, {
       method: "GET",
     })
       .then((res) => res.json())
