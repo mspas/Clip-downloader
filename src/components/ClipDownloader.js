@@ -1,6 +1,8 @@
 import React from "react";
 import "./downloader.css";
 
+const domain = "http://localhost:9000";
+
 class ClipDownloader extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class ClipDownloader extends React.Component {
     let validateUrl = new RegExp("https:\/\/w{3}.twitch.tv\/.*").test(this.state.url);
     if (!validateUrl) validateUrl = new RegExp("https:\/\/clips.twitch.tv\/.*").test(this.state.url);
     if (validateUrl)
-      fetch(`http://localhost:9000/download/twitchclip?URL=${this.state.url}`, {
+      fetch(domain + `/download/twitchclip?URL=${this.state.url}`, {
         method: "GET",
       })
         .then((res) => res.json())
