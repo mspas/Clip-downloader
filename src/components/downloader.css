@@ -44,3 +44,26 @@ button {
 button:hover {
   letter-spacing: 4px;
 }
+.alert {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 20px;
+  background: #ec1b1b9a;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 13px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.466);
+  animation: fadeIn 1s ease-in
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

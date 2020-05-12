@@ -1,15 +1,23 @@
 import React from "react";
 import "./App.css";
-import ClipDownloader from "./components/ClipDownloader";
-import YouTubeDownloader from "./components/YouTubeDownloader";
 import Switch from "./components/Switch";
+import Downloader from "./components/Downloader";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       activeOption: 0,
-      options: [{ title: "Twitch Clips" }, { title: "YouTube" }],
+      options: [{
+        type: "twitch-clip",
+        exampleURL: "https://clips.twitch.tv/WonderfulSpikyLlamaWTRuck",
+        title: "Twitch Clips"
+      },
+      {
+        type: "youtube",
+        exampleURL: "https://www.youtube.com/watch?v=lU0U3gogyOM",
+        title: "YouTube"
+      }]
     };
     this.handleOptionClick = this.handleOptionClick.bind(this);
   }
@@ -29,8 +37,7 @@ class App extends React.Component {
           onOptionClick={this.handleOptionClick}
         />
         <div className="downloader-wrap">
-          {this.state.activeOption === 0 && <ClipDownloader />}
-          {this.state.activeOption === 1 && <YouTubeDownloader />}
+          <Downloader data={this.state.options[this.state.activeOption]} key={this.state.options[this.state.activeOption].type} />
         </div>
       </main>
     );
