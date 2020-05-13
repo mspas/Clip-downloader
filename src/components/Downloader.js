@@ -39,10 +39,21 @@ class Downloader extends React.Component {
   };
 
   getTwitchClip(url) {
+    let videoId = "";
     let validateUrl = new RegExp("https:\/\/w{3}.twitch.tv\/.*").test(url);
-    if (!validateUrl) validateUrl = new RegExp("https:\/\/clips.twitch.tv\/.*").test(url);
+
+    if (validateUrl) {
+      let temp = url.split("/")
+      videoId = temp[temp.length - 1].split("?")[0];
+    }
+    else {
+      validateUrl = new RegExp("https:\/\/clips.twitch.tv\/.*").test(url);
+      let temp = url.split("/")
+      videoId = temp[temp.length - 1];
+    }
+
     if (validateUrl)
-      fetch(domain + `/download/twitchclip?URL=${url}`, {
+      fetch(domain + `/download/twitchclip?videoId=${videoId}`, {
         method: "GET",
       })
         .then((res) => res.json())
@@ -64,9 +75,20 @@ class Downloader extends React.Component {
   }
 
   getYTVideo(url) {
+    let videoId = "";
     let validateUrl = new RegExp("https:\/\/w{3}.youtube.com\/.*").test(url);
     if (validateUrl) {
-      fetch(domain + `/get-video-info?URL=${url}`, {
+      let temp = url.split("/")
+      videoId = temp[temp.length - 1].split("?v=")[1];
+    }
+    else {
+      validateUrl = new RegExp("https:\/\/youtu.be\/.*").test(url);
+      let temp = url.split("/")
+      videoId = validateUrl ? temp[temp.length - 1].split("?")[0] : "";
+    }
+
+    if (validateUrl) {
+      fetch(domain + `/get-video-info?videoId=${videoId}`, {
         method: "GET",
       })
         .then((res) => res.json())
@@ -77,7 +99,7 @@ class Downloader extends React.Component {
               showAlert: true
             })
           else
-            window.location.href = domain + `/download/ytvideo?URL=${url}`;
+            window.location.href = domain + `/download/ytvideo?URL=${url}&videoId=${videoId}`;
         });
     }
     else {

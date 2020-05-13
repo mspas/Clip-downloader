@@ -26,9 +26,7 @@ const twitchOptions = {
 const YT_API_KEY = "...";
 
 app.get("/download/twitchclip", async (req, res) => {
-  var URL = req.query.URL;
-  var temp = URL.split("/");
-  var clipName = temp[temp.length - 1];
+  var clipName = req.query.videoId;
   var downloadURL = "";
   var statusCode = 200;
 
@@ -46,7 +44,7 @@ app.get("/download/twitchclip", async (req, res) => {
             downloadURL = body.thumbnails.small.split("-preview-")[0] + ".mp4";
             resolve(downloadURL);
           } catch (error) {
-            printError(error);
+            console.log(error);
           }
         } else {
           statusCode = res.statusCode;
@@ -63,8 +61,7 @@ app.get("/download/twitchclip", async (req, res) => {
 
 
 app.get("/get-video-info", async (req, res) => {
-  const URL = req.query.URL;
-  const videoId = URL.split("?")[1].match(/v=([^&]+)/)[1];
+  const videoId = req.query.videoId;
   let foundFlag = false;
 
   await new Promise((resolve) => {
@@ -81,7 +78,7 @@ app.get("/get-video-info", async (req, res) => {
             foundFlag = body.items.length > 0 ? true : false;
             resolve(foundFlag);
           } catch (error) {
-            printError(error);
+            console.log(error);
           }
         } else {
           resolve(foundFlag);
@@ -97,7 +94,7 @@ app.get("/get-video-info", async (req, res) => {
 
 app.get("/download/ytvideo", async (req, res) => {
   const URL = req.query.URL;
-  const videoId = URL.split("?")[1].match(/v=([^&]+)/)[1];
+  const videoId = req.query.videoId;
 
   res.header('Content-Disposition', 'attachment; filename=" video' + videoId + '.mp4"');
   ytdl(URL, {
