@@ -4,7 +4,7 @@
 
 main {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   transition-timing-function: ease-in;
   transition-duration: 0.2s;
 }
