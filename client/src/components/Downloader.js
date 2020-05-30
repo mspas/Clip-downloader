@@ -38,6 +38,8 @@ class Downloader extends React.Component {
           case "youtube":
             this.getYTVideo(this.state.url);
             break;
+          default:
+            break;
         }
       }
     );

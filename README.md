@@ -4,20 +4,18 @@
 Install server and client dependencies
 
 ```
-yarn
+npm install
 cd client
-yarn
+npm install
 ```
 
 To start the server and client at the same time (from the root of the project)
 
 ```
-yarn dev
+npm run dev
 ```
 
 Running the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:5000
 
-```
-NODE_ENV=production yarn dev:server
 ```
 Deployed on Heroku
