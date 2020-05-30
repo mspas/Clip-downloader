@@ -2,8 +2,6 @@ import React from "react";
 import "./downloader.css";
 import Loader from "react-loader-spinner";
 
-const domain = "http://localhost:5000";
-
 class Downloader extends React.Component {
   constructor(props) {
     super(props);
@@ -114,13 +112,43 @@ class Downloader extends React.Component {
               isLoading: false,
             });
           else {
-            console.log(videoId);
-            window.location.href =
-              domain +
-              `/api/download/ytvideo?URL=${url}&videoId=${videoId}&format=${this.state.selectedFormat}`;
-            this.setState({
-              isLoading: false,
-            });
+            fetch(`/api/download/ytvideo?URL=${url}&videoId=${videoId}&format=${this.state.selectedFormat}`, {
+              method: "GET",
+            })
+              .then((res) => {
+                const reader = res.body.getReader();
+                return new ReadableStream({
+                  start(controller) {
+                    return pump();
+                    function pump() {
+                      return reader.read().then(({ done, value }) => {
+                        if (done) {
+                          controller.close();
+                          return;
+                        }
+                        controller.enqueue(value);
+                        return pump();
+                      });
+                    }
+                  }
+                })
+              })
+              .then(stream => new Response(stream))
+              .then(response => response.blob())
+              .then(blob => URL.createObjectURL(blob))
+              .then(url => {
+                let a = document.createElement("a");
+                a.href = url;
+                a.download = `${videoId}.${this.state.selectedFormat}`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+              })
+              .catch(err => console.error(err))
+              .then(() => {
+                this.setState({
+                  isLoading: false,
+                });
+              });
           }
         });
     } else {
@@ -176,21 +204,21 @@ class Downloader extends React.Component {
             </div>
           </div>
         ) : (
-          " "
-        )}
+            " "
+          )}
         <button className="convert-button" onClick={this.handleGetClip}>
           Download
         </button>
         {this.state.showAlert ? (
           <div className="alert">{this.state.alertText}</div>
         ) : (
-          " "
-        )}
+            " "
+          )}
         {this.state.isLoading ? (
           <Loader type="TailSpin" color="#00BFFF" height={50} width={50} />
         ) : (
-          " "
-        )}
+            " "
+          )}
       </div>
     );
   }

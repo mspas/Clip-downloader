@@ -67,9 +67,9 @@ app.get("/api/get-video-info", async (req, res) => {
   await new Promise((resolve) => {
     var req = https.get(
       "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" +
-        videoId +
-        "&key=" +
-        YT_API_KEY,
+      videoId +
+      "&key=" +
+      YT_API_KEY,
       (response) => {
         response.setEncoding("utf8");
         let body = "";
