@@ -4,6 +4,12 @@
   width: 99.9vw;
   height: 225px;
 }
+@media screen and (max-width: 300px) {
+  .switch-container {
+    grid-template-columns: none;
+    height: auto;
+  }
+}
 .switch-container > .switch-option {
   cursor: pointer;
   text-align: center;

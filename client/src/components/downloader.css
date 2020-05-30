@@ -7,7 +7,7 @@ h1 {
 h1 > span {
   font-size: 0.7em;
 }
-input {
+.URL-input {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -19,9 +19,19 @@ input {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.466);
   transition: box-shadow 0.5s;
 }
-input:focus {
+.URL-input:focus {
   outline: none;
   box-shadow: 1px 2px 5px black;
+}
+.format-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.format-selector > .radio {
+  margin-right: 10px;
+  color: rgba(68, 68, 68, 0.644);
 }
 button {
   cursor: pointer;
@@ -30,6 +40,7 @@ button {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  margin-bottom: 50px;
   letter-spacing: 2px;
   font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -45,7 +56,6 @@ button:hover {
   letter-spacing: 4px;
 }
 .alert {
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
@@ -56,7 +66,7 @@ button:hover {
   font-size: 13px;
   border-radius: 10px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.466);
-  animation: fadeIn 1s ease-in
+  animation: fadeIn 1s ease-in;
 }
 
 @keyframes fadeIn {
