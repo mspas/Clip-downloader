@@ -17,5 +17,4 @@ npm run dev
 
 Running the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:5000
 
-```
 Deployed on Heroku

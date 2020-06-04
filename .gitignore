@@ -5,6 +5,7 @@ node_modules
 /client/node_modules
 # testing
 coverage
+keys.txt
 
 # production
 build
