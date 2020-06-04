@@ -10,17 +10,15 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API calls
-
 const twitchOptions = {
   headers: {
     Accept: "application/vnd.twitchtv.v5+json",
-    "Client-ID": "",
+    "Client-ID": "uywdn3u5k0i0p27xlasmsp7vxk1o2t",
   },
   method: "GET",
 };
 
-const YT_API_KEY = "";
+const YT_API_KEY = "AIzaSyC6po_hBpCzAlmDcGBG8lqKBo0SM-B9cyw";
 
 app.get("/api/download/twitchclip", async (req, res) => {
   var clipName = req.query.videoId;
@@ -112,10 +110,8 @@ app.get("/api/download/ytvideo", async (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  // Serve any static files
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  // Handle React routing, return all requests to React app
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
