@@ -1,0 +1,121 @@
+.App {
+  text-align: center;
+}
+
+/*main {
+  width: 100vw;
+  min-height: 100vh;
+  transition-timing-function: ease-in;
+  transition-duration: 0.2s;
+}
+main > h1 {
+  margin-top: 0;
+  padding-top: 0.67em;
+  letter-spacing: 2px;
+}*/
+
+nav {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+/*.twitch {
+  background: #cfb0ff;
+  font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.youtube {
+  background: #ffbdbd;
+  font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}*/
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentMain {
+  display: inline-grid;
+  grid-template-columns: 1.0fr 1.0fr;
+  width: 195vw;
+  height: 100vh;
+  transition-timing-function: ease-in;
+  transition-duration: 0.3s;
+}
+
+section {
+  position: relative;
+  display: inline-block;
+  padding-top: calc(10vh + 200px);
+  padding-bottom: 10vh;
+}
+section:first-child {
+  padding-left: 2vw;
+  background: #cfb0ff;
+  font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+section:last-child {
+  padding-right: 12vw;
+  background: #ffbdbd;
+  font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.waveVertical {
+  position: absolute;
+  right: -50px;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.waveHorizontal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.waveHorizontal svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 106px;
+}
+
+.waveHorizontal .shapeFill {
+  fill: #FFBDBD;
+}
+
+@media screen and (min-width: 1600px) {
+  .waveHorizontal {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .contentMain {
+    display: inline-block;
+    grid-template-columns: none;
+    width: 100vw;
+  }
+  section {
+    height: 95%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  section:first-child {
+    padding: 0;
+  }
+  section:last-child {
+    padding: 0;
+  }
+  .waveVertical {
+    display: none;
+  }
+}

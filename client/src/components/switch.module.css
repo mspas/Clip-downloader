@@ -1,60 +1,78 @@
-.switch-container {
+.switchContainer {
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
-  width: 99.9vw;
-  height: 225px;
+  width: 99.9vw !important;
+  height: 200px;
 }
 @media screen and (max-width: 300px) {
-  .switch-container {
+  .switchContainer {
     grid-template-columns: none;
     height: auto;
   }
 }
-.switch-container > .switch-option {
-  cursor: pointer;
+@media screen and (max-width: 745px) {
+  .switchContainer {
+    height: 20vh;
+  }
+  .switchOption > .title {
+    margin-top: 10% !important;
+  }
+}
+
+.switchContainer > .switchOption {
+  cursor: pointer !important;
   text-align: center;
   min-height: 100%;
   color: rgba(0, 0, 0, 0.55);
-  background: rgba(255, 255, 255, 0.068);
+  background: rgba(255, 255, 255, 0.192);
   border-left: 1px solid rgba(255, 255, 255, 0.192);
   border-right: 1px solid rgba(255, 255, 255, 0.192);
 }
-.switch-container > .switch-option:first-child {
+.switchContainer > .switchOption:first-child {
   border-left: none;
 }
-.switch-container > .switch-option:last-child {
+.switchContainer > .switchOption:last-child {
   border-right: none;
 }
-.switch-container > .switch-option:hover {
+.switchContainer > .switchOption:hover {
   background: rgba(255, 255, 255, 0.192);
 }
-.switch-container > .switch-option:hover .title,
-.switch-container > .switch-option:hover .title-sm {
+.switchContainer > .switchOption:hover .title,
+.switchContainer > .switchOption:hover .titleSm {
   animation: shake 0.5s ease infinite;
 }
-.switch-option > .title {
+.switchOption > .title {
   font-size: 3em;
   margin: 0;
-  margin-top: 7%;
+  margin-top: 5%;
 }
 @media screen and (max-width: 550px) {
-  .switch-option > .title {
+  .switchOption > .title {
     font-size: 2em;
   }
 }
 @media screen and (max-width: 420px) {
-  .switch-option > .title {
+  .switchOption > .title {
     margin-top: 35%;
   }
 }
-.switch-option > .title-sm {
+.switchOption > .titleSm {
   letter-spacing: 3px;
 }
 
+@media screen and (max-width: 320px) {
+  .switchOption > .title {
+    font-size: 1.4em;
+  }
+  .switchOption > .titleSm {
+    letter-spacing: 1px;
+    font-size: 1em;
+  }
+}
 .active {
   cursor: default !important;
   color: rgba(0, 0, 0, 0.75) !important;
-  background: rgba(255, 255, 255, 0.192) !important;
+  background: rgba(255, 255, 255, 0.377) !important;
 }
 
 @keyframes shake {

@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const https = require("https");
 const ytdl = require("ytdl-core");
@@ -13,12 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const twitchOptions = {
   headers: {
     Accept: "application/vnd.twitchtv.v5+json",
-    "Client-ID": "",
+    "Client-ID": process.env.TWITCH_CLIENT_ID,
   },
   method: "GET",
 };
 
-const YT_API_KEY = "";
+const YT_API_KEY = process.env.YT_API_KEY;
 
 app.get("/api/download/twitchclip", async (req, res) => {
   var clipName = req.query.videoId;
@@ -96,6 +97,20 @@ app.get("/api/get-video-info", async (req, res) => {
 });
 
 app.get("/api/download/ytvideo", async (req, res) => {
+  const URL = req.query.URL;
+  const videoId = req.query.videoId;
+  const format = req.query.format;
+
+  res.header(
+    "Content-Disposition",
+    'attachment; filename=" video' + videoId + "." + format + '"'
+  );
+  ytdl(URL, {
+    format: format,
+  }).pipe(res);
+});
+
+app.get("/api/download/ytvideo2", async (req, res, next) => {
   const URL = req.query.URL;
   const videoId = req.query.videoId;
   const format = req.query.format;

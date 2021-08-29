@@ -1,5 +1,5 @@
 import React from "react";
-import "./switch.css";
+import styles from "./switch.module.css";
 
 class Switch extends React.Component {
   render() {
@@ -8,18 +8,18 @@ class Switch extends React.Component {
         <div
           className={
             this.props.activeOption === index
-              ? "switch-option active"
-              : "switch-option"
+              ? `${styles.switchOption} ${styles.active}`
+              : styles.switchOption
           }
           key={index}
           onClick={this.props.onOptionClick.bind(null, data, index)}
         >
-          <p className="title">{data.title}</p>
-          <p className="title-sm">Downloader</p>
+          <p className={styles.title}>{data.title}</p>
+          <p className={styles.titleSm}>Downloader</p>
         </div>
       );
     });
-    return <div className="switch-container">{options}</div>;
+    return <div className={styles.switchContainer}>{options}</div>;
   }
 }
 export default Switch;

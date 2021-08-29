@@ -1,6 +1,6 @@
 import React from "react";
-import "./downloader.css";
 import Loader from "react-loader-spinner";
+import styles from './downloader.module.css';
 
 class Downloader extends React.Component {
   constructor(props) {
@@ -170,18 +170,18 @@ class Downloader extends React.Component {
 
   render() {
     return (
-      <div className="downloader-container">
-        <h1 className="heading">
+      <div className={styles.downloaderContainer}>
+        <h1 className={styles.heading}>
           {this.props.data.title} <span>Downloader</span>
         </h1>
-        <p>URL:</p>
+        <p><span>URL:</span></p>
         <input
-          className="URL-input"
-          placeholder={"for ex. " + this.props.data.exampleURL}
+          className={styles.urlInput}
+          placeholder={"e.g. " + this.props.data.exampleURL}
           onChange={this.handleInputChange}
         />
         {this.props.data.type === "youtube" ? (
-          <div className="format-selector">
+          <div className={styles.formatSelector}>
             <div className="radio">
               <label>
                 <input

@@ -1,4 +1,4 @@
-.downloader-container {
+.downloaderContainer {
   text-align: center;
 }
 h1 {
@@ -7,11 +7,14 @@ h1 {
 h1 > span {
   font-size: 0.7em;
 }
-.URL-input {
+span {
+  color: rgba(0, 0, 0, 0.507);
+}
+.urlInput {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 30%;
   height: 25px;
   padding: 10px 20px;
   border: none;
@@ -19,17 +22,17 @@ h1 > span {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.466);
   transition: box-shadow 0.5s;
 }
-.URL-input:focus {
+.urlInput:focus {
   outline: none;
   box-shadow: 1px 2px 5px black;
 }
-.format-selector {
+.formatSelector {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
-.format-selector > .radio {
+.formatSelector > .radio {
   margin-right: 10px;
   color: rgba(68, 68, 68, 0.644);
 }
@@ -67,6 +70,21 @@ button:hover {
   border-radius: 10px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.466);
   animation: fadeIn 1s ease-in;
+}
+
+@media screen and (max-width: 1600px) {
+  .downloaderContainer {
+    text-align: center;
+    width: 400px;
+  }
+  .urlInput {
+    width: calc(100% - 40px);
+  }
+}
+@media screen and (max-width: 425px) {
+  .urlInput {
+    width: 80%;
+  }
 }
 
 @keyframes fadeIn {

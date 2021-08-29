@@ -5,10 +5,11 @@ node_modules
 /client/node_modules
 # testing
 coverage
-keys.txt
 
 # production
 build
+.env
+/client/.env
 
 # misc
 .DS_Store
