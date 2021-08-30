@@ -2,13 +2,13 @@
   text-align: center;
 }
 h1 {
-  color: rgba(0, 0, 0, 0.507);
+  color: #001524;
 }
 h1 > span {
   font-size: 0.7em;
 }
 span {
-  color: rgba(0, 0, 0, 0.507);
+  color: #001524;
 }
 .urlInput {
   display: block;
@@ -26,17 +26,69 @@ span {
   outline: none;
   box-shadow: 1px 2px 5px black;
 }
+
 .formatSelector {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 20px;
 }
-.formatSelector > .radio {
-  margin-right: 10px;
-  color: rgba(68, 68, 68, 0.644);
+.radio {
+  display: inline-block;
 }
+.radioLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 8px 10px;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+.radioLabel:hover, .radioLabel:focus-within {
+  background: rgba(0, 0, 0, 0.075);
+}
+.radioInput {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  z-index: -1;
+}
+.radioDot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background: linear-gradient(to right bottom, #A061FF, #D08FDE);
+  transition: 0.3s;
+}
+.radioDot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 1px solid #c0c0c0;
+  background: #EFFFFA;
+  transform: scale(1);
+  transition: 0.3s;
+}
+.radioText {
+  color: rgba(0, 21, 36, 0.582);
+  margin-left: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.radioInput:checked~.radioDot::after {
+  transform: scale(0);
+}
+
 button {
+  position: relative;
   cursor: pointer;
   outline: none;
   display: block;
@@ -46,22 +98,22 @@ button {
   margin-bottom: 50px;
   letter-spacing: 2px;
   font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: large;
   padding: 10px 20px;
-  border: none;
+  border: solid 2px #00152480;
   border-radius: 5px;
-  background: rgba(68, 68, 68, 0.644);
-  color: aliceblue;
-  transition: all 0.3s cubic-bezier(0.65, -0.25, 0.25, 1.95);
+  background: rgba(68, 68, 68, 0);
+  color: #001524c0;
+  transition: 0.25s;
 }
 button:hover {
-  letter-spacing: 4px;
+  box-shadow: inset 0 0 0 2em #00152486;
+  color: #EFFFFA;
 }
 .alert {
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 400px;
   padding: 20px;
   background: #ec1b1b9a;
   color: #fff;
@@ -84,6 +136,10 @@ button:hover {
 @media screen and (max-width: 425px) {
   .urlInput {
     width: 80%;
+  }
+  .alert {
+    width: 80%;
+    padding: 10px;
   }
 }
 

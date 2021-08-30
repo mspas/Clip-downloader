@@ -182,37 +182,41 @@ class Downloader extends React.Component {
         />
         {this.props.data.type === "youtube" ? (
           <div className={styles.formatSelector}>
-            <div className="radio">
-              <label>
+            <div className={styles.radio}>
+              <label className={styles.radioLabel}>
                 <input
+                  className={styles.radioInput}
                   type="radio"
                   value="mp4"
                   checked={this.state.selectedFormat === "mp4"}
                   onChange={this.handleFormatChange}
                 />
-                MP4
+                <div className={styles.radioDot}></div>
+                <div className={styles.radioText}>MP4</div>
               </label>
-            </div>
-            <div className="radio">
-              <label>
+              </div>
+            <div className={styles.radio}>
+              <label className={styles.radioLabel}>
                 <input
+                  className={styles.radioInput}
                   type="radio"
                   value="mp3"
                   checked={this.state.selectedFormat === "mp3"}
                   onChange={this.handleFormatChange}
                 />
-                MP3
+                <div className={styles.radioDot}></div>
+                <div className={styles.radioText}>MP3</div>
               </label>
             </div>
           </div>
         ) : (
             " "
           )}
-        <button className="convert-button" onClick={this.handleGetClip}>
+        <button onClick={this.handleGetClip}>
           Download
         </button>
         {this.state.showAlert ? (
-          <div className="alert">{this.state.alertText}</div>
+          <div className={styles.alert}>{this.state.alertText}</div>
         ) : (
             " "
           )}

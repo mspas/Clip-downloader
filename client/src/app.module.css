@@ -52,7 +52,7 @@ section {
 }
 section:first-child {
   padding-left: 2vw;
-  background: #cfb0ff;
+  background: #a061ff;
   font-family: Roobert, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 section:last-child {
@@ -71,7 +71,7 @@ section:last-child {
 
 .waveHorizontal {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100%;
   overflow: hidden;
